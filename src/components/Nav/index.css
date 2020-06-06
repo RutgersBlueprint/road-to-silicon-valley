@@ -1,0 +1,149 @@
+.logo {
+  width: 32px;
+  height: 32px;
+  z-index: 1;
+  position: relative;
+}
+
+.logo__graphic {
+  width: 32px;
+  height: 32px;
+}
+
+.logo__graphic:hover::before {
+  transform: translateY(-5px);
+}
+
+.logo__graphic:hover::after {
+  transform: translateY(5px);
+}
+
+.logo__graphic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: none;
+  border-left: 10px solid transparent;
+  border-bottom: 20px solid #E18282;
+  border-right: 10px solid transparent;
+  transition: .2s ease transform;
+}
+
+.logo__graphic::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  border-top: 20px solid rgba(166, 220, 232, 0.8);
+  border-left: 10px solid transparent;
+  border-bottom: none;
+  border-right: 10px solid transparent;
+  transition: .2s ease transform;
+}
+
+.nav {
+  top: 0;
+  position: sticky;
+  z-index: 999;
+  display: flex;
+  height: 48px;
+  padding: 0 40px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.links.links--mobile-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.links__link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 16px;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: .2s ease background-color;
+}
+
+.links__link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.links__link+.links__link {
+  margin-left: 16px;
+}
+
+.links--white {
+  color: white;
+}
+
+.sandwich {
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 25px;
+}
+
+.sandwich__line {
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.sandwich__line:nth-of-type(1) {
+  top: 0px;
+}
+
+.sandwich__line:nth-of-type(2) {
+  top: 10px;
+}
+
+.sandwich__line:nth-of-type(3) {
+  top: 20px;
+}
+
+@media (max-width: 900px) {
+  .sandwich {
+    display: block;
+  }
+  .nav {
+    padding: 0 16px;
+  }
+  .links__link {
+    font-size: 40px;
+  }
+  .links__link+.links__link {
+    margin: 0;
+    margin-top: 16px;
+  }
+  .links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    opacity: 0;
+    padding: 128px 0;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+    pointer-events: none;
+  }
+}

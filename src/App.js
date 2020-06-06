@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
-function App() {
+import Client from "./client";
+
+import { Nav } from "./components/Nav";
+import { Jumbo } from "./pages/Jumbo";
+import { About } from "./pages/About";
+import { Story } from "./pages/Story";
+
+import { Timeline } from "./pages/Timeline/Timeline";
+import { Program } from "./pages/Program";
+import { Members } from "./pages/Members";
+import { Footer } from "./components/Footer";
+import { Gallery } from "./pages/Gallery/Gallery";
+import { AppContext } from "./contexts";
+import { Events } from "./pages/Events";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav />
+      <Jumbo />
+      <About id="about-us" />
+      <Story />
+      <Program />
+      <Members id="our-team" />
+      <Gallery id="gallery" />
+      <Events id="events" />
+      <Timeline id="recruitment" />
+      <Footer />
+    </>
   );
-}
+};
 
-export default App;
+const AppContainer = () => {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await Client.query();
+
+      if (response) {
+        const {
+          results: [{ data }],
+        } = response;
+        setData(data);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <AppContext.Provider value={{ data }}>
+      <App />
+    </AppContext.Provider>
+  );
+};
+
+export default AppContainer;
