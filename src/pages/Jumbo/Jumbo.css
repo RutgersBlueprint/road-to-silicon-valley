@@ -1,0 +1,58 @@
+.jumbo-button {
+  display: block;
+  padding: 0 42px;
+  height: 72px;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  background: #9e2020;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.46);
+  border-radius: 12px;
+}
+
+.jumbo {
+  position: relative;
+  padding-top: 180px;
+  padding-bottom: 240px;
+  background-image: url(/city.png), url(/sky.png);
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+  background-position: 0 bottom, 0 0;
+}
+
+.jumbo__inner {
+  max-width: 64rem;
+  padding: 0 32px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.jumbo__header {
+  text-align: center;
+}
+.jumbo__subheader {
+  padding: 0 64px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+@media(max-width: 1280px) {
+  .jumbo {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .jumbo__header {
+    text-align: left;
+  }
+  .jumbo__subheader {
+    text-align: left;
+    padding: 0;
+  }
+  .jumbo-button {
+    margin: 0;
+    font-size: 18px;
+    height: 56px;
+    padding: 0 24px;
+  }
+}
